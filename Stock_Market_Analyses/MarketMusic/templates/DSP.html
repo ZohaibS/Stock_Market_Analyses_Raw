@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+	<head>
+        <title>Stock Market Machine Learning Analysis Overview</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Main CSS --> 
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+        <!-- Font Awesome -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+  
+    <body>
+
+        <!-- Header -->
+        <div class="header-wrap d-none d-md-block">
+            <div class="container">
+                <div class="row">
+                    
+                    <!-- Left header box -->
+                    <header class="col-6 text-left">
+                        <h1><span>Stock Market </span>Analysis</h1>
+                    </header>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Main navigation -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            <div class="container">
+                
+                <!-- Main navigation items -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/DJIA">DJIA</a>
+                        </li>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="/indices">Indices</a>
+                        </li> -->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/RNN">RNN</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/TDA">TDA</a>
+                        </li>
+                        
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/DSP">DSP</a>
+                        </li>
+
+                    </ul>
+                                       
+                </div>                
+            </div>
+        </nav>
+
+        <!-- Main content area -->
+        <main class="container">
+           <div class="row">
+                
+                <!-- Main content -->
+                <div class="col-md-12">
+                    <article>
+                        <h2 class="article-title">Discrete Signal Processing</h2>
+                        <h3 class="article-meta">Viewing the problem in the context of discrete signals.</h3>
+                        <br>
+                        <br>
+                        <h2 class="article-meta">First, an interactive example.</h2>
+                        
+                        
+                        <div class="col-md-12">
+                            <article>
+<br>
+                                <center>Stock (Yahoo! Finance Ticker): <input type="text" id="myText" value="Stock"></center>
+        
+                                <br>
+                                
+                                <center><button onclick="myFunction()" class="btn btn-dark" >Try it</button></center>
+                                
+                                <p id="demo"></p>
+                                
+                                <script>
+                                function myFunction() {
+                                  var x = document.getElementById("myText").value;
+                                  
+                                  currenthtml = window.location.href
+                                  y =  currenthtml;
+                                  //document.getElementById("demo").innerHTML = y
+                                  var n = y.indexOf("/DSP") 
+                                  gotourl = y.substring(0, n)+'/RMS/'+x
+        
+                                  window.location.href = gotourl
+                                  
+                                }
+                                </script>
+        
+                        
+                        
+                        <div id="myDiv"></div>   
+
+                  
+                        <h2 class="article-title">How does it work?</h2>
+
+                        <p>The process involved in this analysis starts with which the context in which we view the problem.
+                           In the LSTM algorithm (as well as many other popular stock market algorithms), the focus is on
+                           directly predicting the values of the stock market.</p>
+                        
+                        <p>This time, we're approaching the problem differently. We'll start by analyzing the raw signal
+                           derived from taking the difference of the prices at the daily level. In this example, we'll analyze
+                           the DIA again starting from the year 2000 and ending in present day (early 2019).</p>
+
+                        <p>Below is a picture of the raw signal and its corresponding stock prices.</p>
+                        <center><img src="{{url_for('static', filename='Figures/DSP/RawDIASignal.png')}}" alt="RNN" img style='height: 50%; width: 50%; object-fit: fill'></center>
+                        <br>
+                        <center>Signal</center>
+                        <br>
+                        <center><img src="{{url_for('static', filename='Figures/DSP/Stock_Graph0.png')}}" alt="RNN" img style='height: 80%; width: 80%; object-fit: fill'></center>
+                        <center>Stock Prices</center>
+                        <br>
+                        <p>We apply a Fast Fourier Transform, calculate theta values (relevant angles), and construct a point cloud
+                           modeling amplitude and frequency. Note that this data is very noisy. Also, the analysis is only interested in
+                           particular signals. Meaning that the noise from the data needs to be reduced. Hence, a cutoff threashold is set for amplitudes
+                           at which the signal can be classified as either significant or small noise.</p>
+
+                        <center><img src="{{url_for('static', filename='Figures/DSP/AmplitudeVsFreq2.png')}}"></center>
+                        <p><i>Unfiltered Point Cloud</i></p>
+                        <br>
+                        <center><img src="{{url_for('static', filename='Figures/DSP/FilteredAmpVsFreqNew.png')}}"></center>
+
+                        <p><i>Filtered Point Cloud</i></p>
+
+      
+                        <p>Contrary to classical statistical methods, we are interested in values OUTSIDE of a set number of standard
+                           deviations instead of the values INSIDE. Instead of filtering outliers, we are filtering non outliers.</p>
+
+                        <p>A trader might not react much when stocks fluctuate by a penny but would probably be surprised to see fluctuations 
+                           in the range of dollars. A useful analogy would be if the point cloud is a series of sounds, where amplitude represents
+                           volume and frequency represents pitch, sounds would not be heard, unless above a certain amplitude or threshold.</p>
+
+                        <p>To help filter noisy data, the optimal number of standard deviations are found to filter by (refer to the following graph which
+                           compares the Root Mean Square Error with the number of standard deviations of filtration).</p>
+
+                        <center><img src="{{url_for('static', filename='Figures/DSP/IdealSigmaFilter5.png')}}"></center>
+                        <p>Our ideal filtration is at roughly 0.84 standard deviations.</p>
+
+                        <p>A cumulative sum is than applied to the transformed data to ultimately obtain the following regression via DSP plotted against 
+                           market reported stock values.</p>
+                        <br>
+                        <center><img src="{{url_for('static', filename='Figures/DSP/SignalledRegression6.png')}}"></center>
+                </div>
+            </div>
+            
+        </main>
+            
+         <div class="footer-bottom">
+            <p class="text-center">Free Bootstrap Template by <a href="https://zypopwebtemplates.com/">ZyPop</a>.</p>
+            <p class="text-center"><a href="#">Back to top</a></p>
+         </div>
+            
+        </footer>
+
+        <!-- Bootcamp JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <script type = "text/javascript" src = "{{url_for('static', filename='DSP.js')}}"></script>
+
+    </body>
+</html>

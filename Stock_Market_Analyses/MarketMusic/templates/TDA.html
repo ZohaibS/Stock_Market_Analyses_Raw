@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+	<head>
+        <title>Stock Market Machine Learning Analysis Overview</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Main CSS --> 
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+        <!-- Font Awesome -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+  
+    <body>
+
+        <!-- Header -->
+        <div class="header-wrap d-none d-md-block">
+            <div class="container">
+                <div class="row">
+                    
+                    <!-- Left header box -->
+                    <header class="col-6 text-left">
+                        <h1><span>Stock Market </span>Analysis</h1>
+                    </header>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Main navigation -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            <div class="container">
+                
+                <!-- Main navigation items -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/DJIA">DJIA</a>
+                        </li>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="/indices">Indices</a>
+                        </li> -->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/RNN">RNN</a>
+                        </li>
+                        
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/TDA">TDA</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/DSP">DSP</a>
+                        </li>
+
+                    </ul>
+                                       
+                </div>                
+            </div>
+        </nav>
+
+        <!-- Main content area -->
+        <main class="container">
+           <div class="row">
+                
+                <!-- Main content -->
+                <div class="col-md-12">
+                    <article>
+                        <h2 class="article-title">Topological Data Analysis (TDA)</h2>
+                        <h3 class="article-meta">TDA and Fourier Analysis Combined</h3><a href="https://en.wikipedia.org/wiki/Topological_data_analysis" target="_blank">TDA - Wikipedia</a>
+                  
+                        <p>In applied mathematics, topological data analysis (TDA) is an approach to the analysis of datasets using
+                           techniques from topology. Extraction of information from datasets that are high-dimensional, 
+                           incomplete and noisy is generally challenging. TDA provides a general framework to analyze such data
+                           in a manner that is insensitive to the particular metric chosen and provides dimensionality reduction and
+                           robustness to noise. Beyond this, it inherits functoriality, a fundamental concept of modern mathematics, 
+                           from its topological nature, which allows it to adapt to new mathematical tools.</p>
+
+                        <p>This analysis delves into studying the shape of data, where TDA has combined algebraic topology and other tools
+                           from pure mathematics such as signals processing to allow mathematically rigorous study of "shape". The main tool is persistent homology,
+                           an adaptation of homology to point cloud data. This analysis involves using the same process from the DSP page
+                           to obtain a filtered point cloud, partitioned based on timeframes the signals appeared within. An example of the work flow is as follows:</p>
+
+                           <center><img src="{{url_for('static', filename='Figures/TDA/Illustration_of_Typical_Workflow_in_TDA.jpeg')}}"></center>
+
+
+                        <p>Using pointclouds from various timeframes, topological data analysis is used 
+                           to study the shape of the various "notes" the stock plays. The two main metrics
+                           investigated in our TDA analysis involved bottleneck distances between timeframes and "loops"
+                           within the timeframes.</p>
+
+                        <p>To understand how 'noisy' the dataset is, a 'bottleneck' distance (represented on the y-axis) informs ATLEAST how much noise 
+                           is added from one analysis-window to the next. It provides a rough idea of how much more stochastic one window is from the next.
+                           Below is the relevant visual.</p>                        
+
+                        <center><img src="{{url_for('static', filename='Figures/TDA/Bottlenecks.png')}}"></center>
+
+
+                        <p>In essence, constantly growing circles are wrapped around datapoints which the alogrithm can then proceed 
+                           to connecting dots and creating shapes. As the circles around points grow, interesting things begin to happen
+                           with created shapes and time loops, as well as times loops being destroyed. Below is a persistence diagram labeling the birth times and death times of these loops throughout
+                           the analysis timeframes.</p>
+
+                        <center><img src="{{url_for('static', filename='Figures/TDA/TDA_GIF.gif')}}"></center>
+
+                        <p>Finally, the total number of loops that were born and killed during the analysis. Notice
+                           the massive spike in the number of loops during the timeframe containing the 2008 market crash.</p>
+
+                        <center><img src="{{url_for('static', filename='Figures/TDA/Loopy.png')}}"></center>
+
+                        <p>At the risk of oversimplifying TDA, its at its very basics an algorithm 
+                           specifically catered to analyzing shapes within point clouds. On a small scale, this may be insignificant.
+                           On a larger scale, the analysis could run using month long intervals over a decade or more incurring hundreds
+                           of timeframes with different shapes. Running additional machine learning algorithms on this layer can help 
+                           determine classifiers related to distinct shapes the algorithm sees and can give unique insights into
+                           preceding timeframes of significant interest.</p>
+
+                        <p>Note that this combination of Topological Data Analysis and Fourier Analysis is still in its infancy.
+                           Looking for other literature on this topic led to no useful leads. Hence, this approach is just a starting
+                           point for future machine learning ensembles.</p>
+
+                    </article>
+                </div>
+            </div>
+            
+        </main>
+
+         <div class="footer-bottom">
+            <p class="text-center">Free Bootstrap Template by <a href="https://zypopwebtemplates.com/">ZyPop</a>.</p>
+            <p class="text-center"><a href="#">Back to top</a></p>
+         </div>
+            
+        </footer>
+
+        <!-- Bootcamp JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    </body>
+</html>

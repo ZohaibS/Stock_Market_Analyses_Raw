@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+	<head>
+        <title>Stock Market Machine Learning Analysis Overview</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Main CSS --> 
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+        <!-- Font Awesome -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+  
+    <body>
+
+        <!-- Header -->
+        <div class="header-wrap d-none d-md-block">
+            <div class="container">
+                <div class="row">
+                    
+                    <!-- Left header box -->
+                    <header class="col-6 text-left">
+                        <h1><span>Stock Market </span>Analysis</h1>
+                    </header>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Main navigation -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            <div class="container">
+                
+                <!-- Main navigation items -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/DJIA">DJIA</a>
+                        </li>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="/indices">Indices</a>
+                        </li> -->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/RNN">RNN</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/TDA">TDA</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/DSP">DSP</a>
+                        </li>
+
+                    </ul>
+                                       
+                </div>                
+            </div>
+        </nav>
+
+        <!-- Main content area -->
+        <main class="container">
+            <div class="row">
+                
+                <!-- Main content -->
+                <div class="col-md-12">
+                    <article>
+                        <h2 class="article-title">Analysis Overview</h2>
+
+                        <p>Stock market analysis has been in-focus due to fluctuations that cause ripple effects on the economy, 
+                            both positive and negative. Since analysis tools have been more in the fore-front, various methods have been applied
+                            trying to predict stock prices towards understanding future market fluctuations and stability. For these analyses, data consisting of the
+                            Dow Jones Industrial Average ETF (NYSE: DIA) and deep larning via Recursive Neural Networks (RNN) and Topological Data Analysis (TDA) were applied.
+                            Additionaly, another approach was undertaken using Direct Signal Processing (DSP) as a means of comparison to machine learning techniques. At the
+                            outset to help understand and visualize market prediction, the following questions were investigated:</p>
+
+                        <ul>
+                            <li><b>Is there a correlation between daily volume and volatility in the stock market?</b></li>
+                            <br>
+                            <li><b>Can we use the daily closing price of a stock to forecast with confidence the future price of the stock?</b></li>
+                            <br>
+                            <li><b>What kind of approaches can we use to better filter market noise in our regression models?</b></li>
+                            <br>
+                            <li><b>Can we derive unique insights and a different approach to measuring volatility from studying the shape of signals?</b></li>
+                        </ul>
+                        <br>
+      
+                    </article>
+
+                    <article>
+
+                        <h2 class="article-title">Exchange-Traded Fund</h2>
+
+                        <p>ETFs are marketable securities that track a stock index, a commodity or bond, or a basket of assets. Although similar
+                            in many ways, ETFs differ from mutual funds because shares trade like common stock on an exchange. The price of an 
+                            ETF’s shares will change throughout the day as they are bought and sold. The largest ETFs typically have higher 
+                            average daily volume and lower fees than mutual fund shares which makes them an attractive
+                            alternative for individual investors.</p>
+                    
+                    </article>
+     
+                    <article>
+
+                        <h2 class="article-title">ETFs Informational Facts</h2>
+                        <p class="article-meta">Dow Jones Industrial Average (DJIA) - the DOW</a></p>
+
+                        <p>ETFs are marketable securities that track a stock index, a commodity or bond, or a basket of assets. Although similar
+                            in many ways, ETFs differ from mutual funds because shares trade like common stock on an exchange. The price of an 
+                            ETF’s shares will change throughout the day as they are bought and sold. The largest ETFs typically have higher 
+                            average daily volume and lower fees than mutual fund shares which makes them an attractive
+                            alternative for individual investors.</p>
+                    
+                            <ul>
+                                <li>DOW is a stock market index composed of 30 "blue-chip" stocks via large, publicly owned companies based in the United States.</li>
+                                <li>The current market cap: $7.5 trillion (Sep. 2018).</li>
+                                <li>Trading occurs on the NYSE and NASDAQ under the symbol DJI.</li>
+                                <li>The DJIA is the oldest continuous barometer of the U.S. stock market, and the most widely quoted indicator of U.S. stock market activity.</li>
+                            </ul>
+    
+                    </article>
+
+                    <article>
+
+                            <h2 class="article-title">Conclusions</h2>
+                            
+                                <ul>
+                                    <li>The daily value of a stock represents the liquidity of the stock. The higher the volume traded, the more liquid the stock can be considered and the lower the day to day volatility with the said stock. </li>
+                                    <li>We can use the moving average of daily stock prices to attempt to predict future prices.</li>
+                                    <li>The Fourier transform is one of the most powerful tools that we can use to build a variety of machine learning algorithms intended to forecast the stock market.</li>
+                                    <li>Applying Topological Data Analysis to the point cloud derived from a return signal can help us understand the underlying "music" a stock plays.</li>
+                                </ul>
+        
+                        </article>
+    
+                </div>                
+            </div> 
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-lists">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul><center>
+                                <li><h4>Have any questions or just want to connect? Feel free to follow us on Github!</h4></li>
+                                <li><a href="https://github.com/Kamran-Wali" target="_blank">Kamran Wali</a></li>
+                                <li><a href="https://github.com/ZohaibS" target="_blank">Zohaib Syed</a></li>
+                                <li><a href="https://github.com/mdlefrancois" target="_blank">Mike LeFrancois</a></li>
+                            </ul></center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="footer-bottom">
+                    <p class="text-center">Free Bootstrap Template by <a href="https://zypopwebtemplates.com/">ZyPop</a>.</p>
+                    <p class="text-center"><a href="#">Back to top</a></p>
+            </div>
+            
+        </footer>
+
+        <!-- Bootcamp JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    </body>
+</html>

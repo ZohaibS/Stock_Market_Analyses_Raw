@@ -1,0 +1,84 @@
+<html>
+   <head>
+      <title></title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" src="{{url_for('static', filename='d3Style.css')}}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+   </head>
+   
+   <body>
+
+<div class="container">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button> -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+         <div class="navbar-nav">
+               <a class="nav-item nav-link" href="/">Home</a>
+               <a class="nav-item nav-link" href="/Stocks">Stocks</a>
+               <a class="nav-item nav-link" href="/indices">Indices</a>
+               <a class="nav-item nav-link" href="/RNN">RNN</a>
+               <a class="nav-item nav-link" href="/TDA">TDA</a>
+               <a class="nav-item nav-link" href="/DSP">DSP</a>
+         </div>
+   <!-- </div> -->
+   </nav>               
+
+      <div class="jumbotron">
+         <div class="container">
+            <h1><left>Stock Market Analysis Overview</left></h1>
+               <ul class="list-unstyled">
+                  <p>Stock market analysis has been in-focus due to fluctuations that cause ripple effects on the economy, 
+                      both positive and negative. Since analysis tools have been more in the fore-front, various investigations have been completed
+                      to understand future market fluctuations via stock prices and stability. For this analysis, data consisting of the
+                      Dow Jones Inductrial Index and deep larning via Recursive Neural Networks (RNN) and Topological Data Analysis (TDA) were applied.
+                      Additionaly, another approach was applied using Direct Signal Processing (DSP) as a means of comparison to machine learning techniques. At the
+                      outset to help understand and visualize market prediction, the following questions are to be investigated:</p>
+                     <br>
+                  <li><b>What might be the short-term stock future?</b></li>
+                     <br>
+                  <li><b>How many days per time-period did the DJIA take a large hit (2% change)?</b></li>
+                  <br>
+                  <br>
+            <!-- </div> -->
+
+            <h1><left>Exchange-Traded Fund</left></h1> 
+            <p>ETFs are marketable securities that track a stock index, a commodity or bond, or a basket of assets. Although similar
+               in many ways, ETFs differ from mutual funds because shares trade like common stock on an exchange. The price of an 
+               ETF’s shares will change throughout the day as they are bought and sold. The largest ETFs typically have higher 
+               average daily volume and lower fees than mutual fund shares which makes them an attractive
+               alternative for individual investors.</p>
+         </div>
+                  
+         <div class="container">
+            <h1><left>ETFs Informational Facts</left></h1>
+   <p class="font-italic">
+      Dow Jones Industrial Average (DJIA) - the DOW
+      <ul>
+         <li>DOW is a stock market index composed of 30 large, publicly owned companies based in the United States, 30 "blue-chip" stocks.</li>
+         <li>The current market cap: $7.5 trillion (Sep. 2018).</li>
+         <li>Trading occurs on the NYSE and NASDAQ under the symbol DJI.</li>
+         <li>The DJIA is the oldest continuous barometer of the U.S. stock market, and the most widely quoted indicator of U.S. stock market activity.</li>
+      </ul>
+   </p>
+</div> <!--#close out main div-->   
+
+<!--#end of the front-end page-->   
+   <br>
+         <p><center>Have any questions or just want to connect? Feel free to follow us on Github!
+            <br>
+         <br>
+         <a style="color: lightseagreen" href="https://github.com/Kamran-Wali" target="_blank">Kamran Wali</a> 
+         <br>
+         <a style="color: lightseagreen" href="https://github.com/ZohaibS" target="_blank">Zohaib Syed</a>
+         <br>
+         <a style="color: lightseagreen" href="https://github.com/mdlefrancois" target="_blank">Mike LeFrancois</a> 
+         </center></p>
+         <script src="https://d3js.org/d3.v5.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+         <script type="text/javascript" language="javascript" src="{{url_for('static', filename='Hi.js')}}"></script>
+</body>
+</html>   
